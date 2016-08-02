@@ -7,26 +7,25 @@ const app = express()
 
 app.set('port', (process.env.PORT || 5000))
 
-// Process application/x-www-form-urlencoded
+// parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}))
 
-// Process application/json
+// parse application/json
 app.use(bodyParser.json())
 
-// Index route
+// index
 app.get('/', function (req, res) {
-    res.send('Hello world, I am a chat bot')
+	res.send('hello world i am a secret bot')
 })
 
-// for Facebook verification
+// for facebook verification
 app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
-        res.send(req.query['hub.challenge'])
-    }
-    res.send('Error, wrong token')
+	if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
+		res.send(req.query['hub.challenge'])
+	}
+	res.send('Error, wrong token')
 })
-
-// Spin up the server
+// spin spin sugar
 app.listen(app.get('port'), function() {
-    console.log('running on port', app.get('port'))
+	console.log('running on port', app.get('port'))
 })
